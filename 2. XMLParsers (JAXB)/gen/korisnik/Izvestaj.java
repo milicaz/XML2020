@@ -11,23 +11,24 @@ package korisnik;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CTMarkaAuta complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CTMarkaAuta">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element ref="{korisnik}Automobili"/>
- *         &lt;element ref="{korisnik}Modeli"/>
+ *         &lt;element ref="{korisnik}Automobil"/>
+ *         &lt;element name="Predjena_kilometraza" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="Dodatni_info" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,22 +38,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CTMarkaAuta", propOrder = {
+@XmlType(name = "", propOrder = {
     "id",
-    "name",
-    "automobili",
-    "modeli"
+    "automobil",
+    "predjenaKilometraza",
+    "dodatniInfo"
 })
-public class CTMarkaAuta {
+@XmlRootElement(name = "Izvestaj")
+public class Izvestaj {
 
     @XmlElement(name = "Id")
     protected long id;
-    @XmlElement(name = "Name", required = true)
-    protected String name;
-    @XmlElement(name = "Automobili", required = true)
-    protected Automobili automobili;
-    @XmlElement(name = "Modeli", required = true)
-    protected Modeli modeli;
+    @XmlElement(name = "Automobil", required = true)
+    protected Automobil automobil;
+    @XmlElement(name = "Predjena_kilometraza")
+    protected float predjenaKilometraza;
+    @XmlElement(name = "Dodatni_info", required = true)
+    protected String dodatniInfo;
 
     /**
      * Gets the value of the id property.
@@ -71,75 +73,67 @@ public class CTMarkaAuta {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the automobil property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Automobil }
+     *     
+     */
+    public Automobil getAutomobil() {
+        return automobil;
+    }
+
+    /**
+     * Sets the value of the automobil property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Automobil }
+     *     
+     */
+    public void setAutomobil(Automobil value) {
+        this.automobil = value;
+    }
+
+    /**
+     * Gets the value of the predjenaKilometraza property.
+     * 
+     */
+    public float getPredjenaKilometraza() {
+        return predjenaKilometraza;
+    }
+
+    /**
+     * Sets the value of the predjenaKilometraza property.
+     * 
+     */
+    public void setPredjenaKilometraza(float value) {
+        this.predjenaKilometraza = value;
+    }
+
+    /**
+     * Gets the value of the dodatniInfo property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getDodatniInfo() {
+        return dodatniInfo;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the dodatniInfo property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
-    }
-
-    /**
-     * Gets the value of the automobili property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Automobili }
-     *     
-     */
-    public Automobili getAutomobili() {
-        return automobili;
-    }
-
-    /**
-     * Sets the value of the automobili property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Automobili }
-     *     
-     */
-    public void setAutomobili(Automobili value) {
-        this.automobili = value;
-    }
-
-    /**
-     * Gets the value of the modeli property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Modeli }
-     *     
-     */
-    public Modeli getModeli() {
-        return modeli;
-    }
-
-    /**
-     * Sets the value of the modeli property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Modeli }
-     *     
-     */
-    public void setModeli(Modeli value) {
-        this.modeli = value;
+    public void setDodatniInfo(String value) {
+        this.dodatniInfo = value;
     }
 
 }

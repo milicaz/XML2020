@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{korisnik}Automobil" maxOccurs="unbounded"/>
+ *         &lt;element ref="{korisnik}Izvestaj" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,41 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "automobil"
+    "izvestaj"
 })
-@XmlRootElement(name = "Automobili")
-public class Automobili {
+@XmlRootElement(name = "Izvestaji")
+public class Izvestaji {
 
-    @XmlElement(name = "Automobil", required = true)
-    protected List<Automobil> automobil;
+    @XmlElement(name = "Izvestaj", required = true)
+    protected List<Izvestaj> izvestaj;
 
     /**
-     * Gets the value of the automobil property.
+     * Gets the value of the izvestaj property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the automobil property.
+     * This is why there is not a <CODE>set</CODE> method for the izvestaj property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAutomobil().add(newItem);
+     *    getIzvestaj().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Automobil }
+     * {@link Izvestaj }
      * 
      * 
      */
-    public List<Automobil> getAutomobil() {
-        if (automobil == null) {
-            automobil = new ArrayList<Automobil>();
+    public List<Izvestaj> getIzvestaj() {
+        if (izvestaj == null) {
+            izvestaj = new ArrayList<Izvestaj>();
         }
-        return this.automobil;
+        return this.izvestaj;
     }
 
 }

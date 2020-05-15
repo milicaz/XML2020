@@ -45,6 +45,10 @@
 		<xjc schema="${data.dir}/Oglas.xsd" destdir="${gen.dir}"/>
 		<xjc schema="${data.dir}/Poruka.xsd" destdir="${gen.dir}"/>
 		<xjc schema="${data.dir}/Komentar.xsd" destdir="${gen.dir}"/>
+		<xjc schema="${data.dir}/AgentBooking.xsd" destdir="${gen.dir}"/>
+		<xjc schema="${data.dir}/KupacBooking.xsd" destdir="${gen.dir}"/>
+		<xjc schema="${data.dir}/Cenovnik.xsd" destdir="${gen.dir}"/>
+		<xjc schema="${data.dir}/Izvestaj.xsd" destdir="${gen.dir}"/>
 	</target>
 	
 	<!-- Requires JRE6 for ant task execution, ExternalToolsConfiguration -->
