@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="korisnik" xmlns:k="korisnik">
+
+    <xs:element name="Cenovnik">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="Cena_po_danu" type="xs:float"/>
+                <xs:element name="Cena_po_km" type="xs:float"/>
+                <xs:element name="Cena_za_CDW" type="xs:float"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

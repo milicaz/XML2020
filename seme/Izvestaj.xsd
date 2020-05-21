@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="korisnik" xmlns:k="korisnik">
+    <xs:include schemaLocation="Automobil.xsd"/>
+    <xs:element name="Izvestaj">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element ref="k:Automobil"/>
+                <xs:element name="Predjena_kilometraza" type="xs:float"/>
+                <xs:element name="Dodatni_info" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Izvestaji">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="k:Izvestaj"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

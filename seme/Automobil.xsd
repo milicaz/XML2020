@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="korisnik" xmlns:k="korisnik">
+
+    <xs:element name="Automobil">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="Marka" type="k:CTMarkaAuta"/>
+                <xs:element name="Model" type="k:CTModelAuta"/>
+                <xs:element name="Klasa" type="k:CTKlasaAuta"/>
+                <xs:element name="Gorivo" type="k:CTVrstaGoriva"/>
+                <xs:element name="Menjac" type="k:CTTipMenjaca"/>
+                <xs:element name="Kilometraza" type="xs:long"/>
+                <xs:element name="Dozvoljena_kilometraza" type="xs:long"/>
+                <xs:element name="CDW" type="xs:boolean"/>
+                <xs:element name="Decija_mesta" type="xs:int"/>
+                <xs:element name="Prosecna_ocena" type="xs:float"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="CTMarkaAuta">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:long"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element ref="k:Automobili"/>
+            <xs:element ref="k:Modeli"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CTModelAuta">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:long"/>
+            <xs:element name="Ime_modela" type="xs:string"/>
+            <xs:element name="Marka" type="k:CTMarkaAuta"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CTKlasaAuta">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:long"/>
+            <xs:element name="Ime_klase" type="xs:string"/>
+            <xs:element ref="k:Automobili"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CTVrstaGoriva">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:long"/>
+            <xs:element name="Ime_goriva" type="xs:string"/>
+            <xs:element ref="k:Automobili"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CTTipMenjaca">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:long"/>
+            <xs:element name="Ime_menjaca" type="xs:string"/>
+            <xs:element ref="k:Automobili"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Automobili">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="k:Automobil"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Model" type="k:CTModelAuta"/>
+    <xs:element name="Modeli">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="k:Model"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

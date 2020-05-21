@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="korisnik" xmlns:k="korisnik">
+    <xs:include schemaLocation="Korisnik.xsd"/>
+    <xs:include schemaLocation="Oglas.xsd"/>
+    <xs:element name="Komentar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element ref="k:Korisnik"/>
+                <xs:element ref="k:Oglas"/>
+                <xs:element name="Komentar" type="xs:string"/>
+                <xs:element name="Approved" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
