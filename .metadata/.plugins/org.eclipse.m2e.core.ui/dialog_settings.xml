@@ -33,8 +33,9 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\Users\Nada\Desktop\git\XML2020\XMLWebServisi_Bezbednost-master\GlavnaAplikacija"/>
+			<item value="C:\Users\Nada\Desktop\git\XML2020\XML-BSEP-master\accomodation_service"/>
 			<item value="C:\Users\Nada\Desktop\git\XML2020\agent-backend"/>
+			<item value="C:\Users\Nada\Desktop\git\XML2020\XMLWebServisi_Bezbednost-master\GlavnaAplikacija"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

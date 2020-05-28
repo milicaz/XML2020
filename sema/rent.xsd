@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="rentacar" xmlns:rac="rentacar">
+
+    <xs:complexType abstract="true" name="Korisnik">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="email">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="prezime" type="xs:string"/>
+            <xs:element name="adresa" type="rac:Adresa"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Adresa">
+        <xs:sequence>
+            <xs:element name="ulica" type="xs:string"/>
+            <xs:element name="broj" type="xs:integer"/>
+            <xs:element name="mesto" type="xs:string"/>
+            <xs:element name="drzava" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Agent">
+        <xs:complexContent>
+            <xs:extension base="rac:Korisnik">
+                <xs:attribute name="poslovni_broj">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=""/>
+                            <xs:minLength value="10"/>
+                            <xs:maxLength value="10"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="naziv_firme" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Administrator">
+        <xs:complexContent>
+            <xs:extension base="rac:Korisnik"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="KrajnjiKorisnik">
+        <xs:complexContent>
+            <xs:extension base="rac:Korisnik">
+                <xs:attribute name="aktivan" type="xs:boolean"/>
+                <xs:attribute name="broj_ograsa">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="0"/>
+                            <xs:maxInclusive value="3"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="Automobil">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="marka_automobila" type="rac:MarkaAuta"/>
+                <xs:element name="model_automobila" type="rac:ModelAuta"/>
+                <xs:element name="klasa_automobila" type="rac:KlasaAuta"/>
+                <xs:element name="vrsta_goriva" type="rac:VrstaGoriva"/>
+                <xs:element name="tip_menjaca" type="rac:TipMenjaca"/>
+                <xs:element name="kilometraza" type="xs:double"/>
+                <xs:element name="dozvoljena_kilometraza" type="xs:double"/>
+                <xs:element name="cdw" type="xs:boolean"/>
+                <xs:element name="decija_sedista" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Komentar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="komentar" type="xs:string"/>
+                <xs:element name="rejting" type="xs:integer"/>
+                <xs:element name="korisnik" type="rac:Korisnik"/>
+                <xs:element ref="rac:Automobil"/>
+                <xs:element name="status" type="rac:StatusKomentara"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Poruka">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="posiljalac" type="rac:Korisnik"/>
+                <xs:element name="primalac" type="rac:Korisnik"/>
+                <xs:element name="sadrzaj" type="xs:string"/>
+                <xs:element name="datum" type="xs:date"/>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Cenovnik">
+        <xs:complexType>
+            <xs:sequence maxOccurs="1" minOccurs="1">
+                <xs:element name="id" type="xs:long"/>
+                <xs:element ref="rac:Automobil"/>
+                <xs:element name="datum_od" type="xs:date"/>
+                <xs:element name="datum_do" type="xs:date"/>
+                <xs:element name="cena_po_danu" type="xs:double"/>
+                <xs:element name="cena_po_kilometru">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:double">
+                            <xs:minInclusive value="0"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="cena_za_cdw">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:double">
+                            <xs:minInclusive value="0"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="StatusKomentara">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CEKANJE"/>
+            <xs:enumeration value="ODOBREN"/>
+            <xs:enumeration value="ODBIJEN"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Rezervacija">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="korisnik" type="rac:Korisnik"/>
+                <xs:element name="datum_od" type="xs:date"/>
+                <xs:element name="datum_do" type="xs:date"/>
+                <xs:element ref="rac:Automobil"/>
+                <xs:element name="rezervacija_agent" type="xs:boolean"/>
+                <xs:element name="status" type="rac:StatusRezervacije"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="StatusRezervacije">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CEKANJE"/>
+            <xs:enumeration value="REZERVISANO"/>
+            <xs:enumeration value="PLACENO"/>
+            <xs:enumeration value="ODBIJENO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Izvestaj">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element ref="rac:Automobil"/>
+                <xs:element name="agent" type="rac:Agent"/>
+                <xs:element name="predjena_kilometraza" type="xs:integer"/>
+                <xs:element name="dodatni_info" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Oglas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element ref="rac:Automobil"/>
+                <xs:element name="korisnik" type="rac:Korisnik"/>
+                <xs:element ref="rac:Cenovnik"/>
+                <xs:element maxOccurs="unbounded" name="slika"/>
+                <xs:element name="slobodan_od" type="xs:date"/>
+                <xs:element name="slobodan_do" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="MarkaAuta">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" ref="rac:Automobil"/>
+            <xs:element maxOccurs="unbounded" name="modeli" nillable="false" type="rac:ModelAuta"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ModelAuta">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="marka_auta" type="rac:MarkaAuta"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="KlasaAuta">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" ref="rac:Automobil"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VrstaGoriva">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" ref="rac:Automobil"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TipMenjaca">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" ref="rac:Automobil"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
