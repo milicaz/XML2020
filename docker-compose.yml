@@ -120,5 +120,51 @@ services:
     depends_on:
       - mysql
       - eureka-server
+
+  mysql:
+    image: mysql:8.0.19
+    restart: always
+    container_name: mysql
+    networks:
+      - xml
+    enviroment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_USER: 
+      MYSQL_PASSWORD: 
+      MYSQL_DATABASE: 
+    volumes:
+
+
+  eureka-server:
+    image: eureka-server
+    restart: on-failure
+    container-name: eureka-server
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    ports: 
+      - 8088:8088
+    networks: 
+      - xml
+
+  zuul-gateway-service:
+    image: zuul-gateway-service
+    restart: on-failure
+    container-name: zuul-gateway-service
+    build:
+      context: ./zuul-gateway-service
+      dockerfile: Dockerfile
+    ports: 
+      - 8087:8087
+    networks: 
+      - xml
+
+volumes:
+
+
+networks:
+  demo:
+    name: xml
+    driver: bridge
    
 
