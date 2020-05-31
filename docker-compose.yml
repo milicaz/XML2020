@@ -1,0 +1,124 @@
+version: "3.7"
+services:
+
+  authentication-service:
+    image: authentication-service
+    restart: on-failure
+    container_name: authentication-service
+    build: 
+      context: ./autentication-service
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
+    networks:
+      - xml
+    enviroment:
+      DATABASE_USERNAME:
+      DATABASE_PASSWORD:
+      DATABASE_DOMAIN:
+      DATABASE_SCHEMA:
+    depends_on:
+      - mysql
+      - eureka-server
+
+  car-service:
+    image: car-service
+    restart: on-failure
+    container_name: car-service
+    build: 
+      context: ./car-service
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8082
+    networks:
+      - xml
+    enviroment:
+      DATABASE_USERNAME:
+      DATABASE_PASSWORD:
+      DATABASE_DOMAIN:
+      DATABASE_SCHEMA:
+    depends_on:
+      - mysql
+      - eureka-server
+
+  message-service:
+    image:message-service
+    restart: on-failure
+    container_name: message-service
+    build: 
+      context: ./message-service
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8083
+    networks:
+      - xml
+    enviroment:
+      DATABASE_USERNAME:
+      DATABASE_PASSWORD:
+      DATABASE_DOMAIN:
+      DATABASE_SCHEMA:
+    depends_on:
+      - mysql
+      - eureka-server
+
+  rating-service:
+    image: rating-service
+    restart: on-failure
+    container_name: rating-service
+    build: 
+      context: ./rating-service
+      dockerfile: Dockerfile
+    ports:
+      - 8084:8084
+    networks:
+      - xml
+    enviroment:
+      DATABASE_USERNAME:
+      DATABASE_PASSWORD:
+      DATABASE_DOMAIN:
+      DATABASE_SCHEMA:
+    depends_on:
+      - mysql
+      - eureka-server
+
+  rent-service:
+    image: rent-service
+    restart: on-failure
+    container_name: rent-service
+    build: 
+      context: ./rent-service
+      dockerfile: Dockerfile
+    ports:
+      - 8085:8085
+    networks:
+      - xml
+    enviroment:
+      DATABASE_USERNAME:
+      DATABASE_PASSWORD:
+      DATABASE_DOMAIN:
+      DATABASE_SCHEMA:
+    depends_on:
+      - mysql
+      - eureka-server
+
+  search-service:
+    image: search-service
+    restart: on-failure
+    container_name: search-service
+    build: 
+      context: ./search-service
+      dockerfile: Dockerfile
+    ports:
+      - 8086:8086
+    networks:
+      - xml
+    enviroment:
+      DATABASE_USERNAME:
+      DATABASE_PASSWORD:
+      DATABASE_DOMAIN:
+      DATABASE_SCHEMA:
+    depends_on:
+      - mysql
+      - eureka-server
+   
+
