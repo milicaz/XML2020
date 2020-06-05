@@ -77,6 +77,8 @@ public class Oglas {
     @JoinColumn(name = "auto_id", nullable = false)
     protected Automobil automobil;
     @XmlElement(required = true)
+    @OneToOne
+    @JoinColumn(name = "korisnik_id", nullable = false)
     protected Korisnik korisnik;
     @XmlElement(name = "Cenovnik", required = true)
     @OneToOne
