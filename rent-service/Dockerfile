@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-EXPOSE 8085
+EXPOSE 8500
 WORKDIR /app
-COPY ./service/rent-service.jar ./
+COPY ./target/rent-service.jar ./
 CMD ["java", "-jar", "rent-service.jar"]

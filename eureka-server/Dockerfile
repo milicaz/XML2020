@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-EXPOSE 8088
+EXPOSE 8761
 WORKDIR /app
-COPY ./service/eureka-server.jar ./
+COPY ./target/eureka-server.jar ./
 CMD ["java", "-jar", "eureka-server.jar"]

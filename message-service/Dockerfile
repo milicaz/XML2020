@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-EXPOSE 8083
+EXPOSE 8900
 WORKDIR /app
-COPY ./service/message-service.jar ./
+COPY ./target/message-service.jar ./
 CMD ["java", "-jar", "message-service.jar"]

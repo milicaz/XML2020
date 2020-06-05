@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-EXPOSE 8082
+EXPOSE 8600
 WORKDIR /app
-COPY ./service/car-service.jar ./
+COPY ./target/car-service.jar ./
 CMD ["java", "-jar", "car-service.jar"]

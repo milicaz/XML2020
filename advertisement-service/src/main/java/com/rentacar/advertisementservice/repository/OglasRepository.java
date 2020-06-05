@@ -1,0 +1,15 @@
+package com.rentacar.advertisementservice.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.rentacar.advertisementservice.model.Oglas;
+
+public interface OglasRepository extends JpaRepository<Oglas, Long> {
+
+	List<Oglas> findAll();
+	
+	Oglas findOne(Long id);
+}
