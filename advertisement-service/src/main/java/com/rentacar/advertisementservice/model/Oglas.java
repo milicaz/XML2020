@@ -85,6 +85,7 @@ public class Oglas {
     @JoinColumn(name = "cenovnik_id", nullable = false)
     protected Cenovnik cenovnik;
     @XmlElement(required = true)
+    @OneToMany
     protected List<Object> slika;
     @XmlElement(name = "slobodan_od", required = true)
     @XmlSchemaType(name = "date")
