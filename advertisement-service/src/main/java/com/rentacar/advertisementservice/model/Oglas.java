@@ -86,7 +86,7 @@ public class Oglas {
     protected Cenovnik cenovnik;
     @XmlElement(required = true)
     @OneToMany
-    protected List<Object> slika;
+    protected byte[] slika;
     @XmlElement(name = "slobodan_od", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar slobodanOd;
