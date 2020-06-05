@@ -23,6 +23,28 @@ services:
       - mysql
       - eureka-server
 
+  advertisement-service:
+    image: advertisement-service
+    restart: on-failure
+    container_name: advertisement-service
+    tty: true
+    build: 
+      context: ./advertisement-service
+      dockerfile: Dockerfile
+    ports:
+      - 8400:8400
+    networks:
+      - xml
+    environment:
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+      DATABASE_DOMAIN: mysql
+      DATABASE_SCHEMA: xml
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - mysql
+      - eureka-server
+
   car-service:
     image: car-service
     restart: on-failure
