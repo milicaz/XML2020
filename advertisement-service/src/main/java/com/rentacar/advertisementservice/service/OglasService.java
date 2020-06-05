@@ -11,5 +11,7 @@ public interface OglasService {
 	
 	List<Oglas> findAll();
 	
+	void delete(Long id);
+	
 
 }

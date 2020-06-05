@@ -24,6 +24,11 @@ public class OglasServiceImpl implements OglasService{
 	public List<Oglas> findAll() {
 		return oglasRepo.findAll();
 	}
+	
+	@Override
+	public void delete(Long id) {
+		oglasRepo.deleteById(id);
+	}
 
 
 }

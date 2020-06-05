@@ -75,10 +75,9 @@
           <tags>persp.actionSet:org.springsource.ide.eclipse.quicksearch.actionSet</tags>
           <tags>persp.actionSet:org.eclipse.text.quicksearch.actionSet</tags>
           <tags>persp.actionSet:org.springsource.ide.eclipse.commons.launch.actionSet</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_yTfbgqStEeqGdIhjeh2nQQ" selectedElement="_yTfbg6StEeqGdIhjeh2nQQ" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_yTfbgqStEeqGdIhjeh2nQQ" selectedElement="_yTfbiKStEeqGdIhjeh2nQQ" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_yTfbg6StEeqGdIhjeh2nQQ" elementId="topLeft" containerData="2500" selectedElement="_yTfbhKStEeqGdIhjeh2nQQ">
               <tags>MinimizedByZoom</tags>
-              <tags>active</tags>
               <children xsi:type="advanced:Placeholder" xmi:id="_yTfbhKStEeqGdIhjeh2nQQ" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_yTfdrKStEeqGdIhjeh2nQQ"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_yTfbhaStEeqGdIhjeh2nQQ" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_yTfd_KStEeqGdIhjeh2nQQ"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_yTfbhqStEeqGdIhjeh2nQQ" elementId="org.eclipse.jdt.ui.TypeHierarchy" toBeRendered="false" ref="_yTfd_aStEeqGdIhjeh2nQQ"/>
@@ -157,11 +156,14 @@
         <children xsi:type="basic:PartStack" xmi:id="_yTfdq6StEeqGdIhjeh2nQQ" elementId="org.eclipse.e4.primaryDataStack" containerData="5000" selectedElement="_tlfz0KdJEeqYhOktWz_iKQ">
           <tags>org.eclipse.e4.primaryDataStack</tags>
           <tags>EditorStack</tags>
+          <tags>active</tags>
           <children xsi:type="basic:Part" xmi:id="_tlfz0KdJEeqYhOktWz_iKQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="OglasController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasController.java&quot; partName=&quot;OglasController.java&quot; title=&quot;OglasController.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/controller/OglasController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/controller/OglasController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;768&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasController.java&quot; partName=&quot;OglasController.java&quot; title=&quot;OglasController.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/controller/OglasController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/controller/OglasController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;947&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+            <tags>active</tags>
+            <tags>activeOnClose</tags>
           </children>
           <children xsi:type="basic:Part" xmi:id="_Kh21cKdKEeqYhOktWz_iKQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="OglasRepository.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
             <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasRepository.java&quot; partName=&quot;OglasRepository.java&quot; title=&quot;OglasRepository.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/repository/OglasRepository.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/repository/OglasRepository.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;348&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
@@ -182,13 +184,13 @@
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           </children>
           <children xsi:type="basic:Part" xmi:id="_V1KDwKdMEeqYhOktWz_iKQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="OglasServiceImpl.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasServiceImpl.java&quot; partName=&quot;OglasServiceImpl.java&quot; title=&quot;OglasServiceImpl.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/service/impl/OglasServiceImpl.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/service/impl/OglasServiceImpl.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;672&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasServiceImpl.java&quot; partName=&quot;OglasServiceImpl.java&quot; title=&quot;OglasServiceImpl.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/service/impl/OglasServiceImpl.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/service/impl/OglasServiceImpl.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;752&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           </children>
           <children xsi:type="basic:Part" xmi:id="_c7wTAKdMEeqYhOktWz_iKQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="OglasService.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasService.java&quot; partName=&quot;OglasService.java&quot; title=&quot;OglasService.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/service/OglasService.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/service/OglasService.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;265&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OglasService.java&quot; partName=&quot;OglasService.java&quot; title=&quot;OglasService.java&quot; tooltip=&quot;advertisement-service/src/main/java/com/rentacar/advertisementservice/service/OglasService.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/advertisement-service/src/main/java/com/rentacar/advertisementservice/service/OglasService.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;292&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
@@ -228,8 +230,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; currentWorkingSetName=&quot;Aggregate for window 1589556899707&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;1&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_yTfdraStEeqGdIhjeh2nQQ" elementId="org.eclipse.ui.navigator.ProjectExplorer">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -419,7 +419,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_yTgCxqStEeqGdIhjeh2nQQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_iiVN4Kc0EeqYhOktWz_iKQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_yTigxaStEeqGdIhjeh2nQQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_k7d-wKdQEeqXBbp2W6Tpkg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_yTigxaStEeqGdIhjeh2nQQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_yTgC06StEeqGdIhjeh2nQQ" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -449,7 +449,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_yTgDJKStEeqGdIhjeh2nQQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_iidwwKc0EeqYhOktWz_iKQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_yTigaqStEeqGdIhjeh2nQQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_k7lTgKdQEeqXBbp2W6Tpkg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_yTigaqStEeqGdIhjeh2nQQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_yTgDLqStEeqGdIhjeh2nQQ" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
