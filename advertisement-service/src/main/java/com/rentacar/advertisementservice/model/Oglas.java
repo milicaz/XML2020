@@ -10,6 +10,12 @@ package com.rentacar.advertisementservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,8 +61,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "slobodanDo"
 })
 @XmlRootElement(name = "Oglas")
+@Entity
+@Table(name = "oglasi")
 public class Oglas {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(name = "Automobil", required = true)
     protected Automobil automobil;
