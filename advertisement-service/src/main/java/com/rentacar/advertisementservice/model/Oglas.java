@@ -204,12 +204,6 @@ public class Oglas {
      * 
      * 
      */
-    public List<Object> getSlika() {
-        if (slika == null) {
-            slika = new ArrayList<Object>();
-        }
-        return this.slika;
-    }
 
     /**
      * Gets the value of the slobodanOd property.
@@ -223,7 +217,15 @@ public class Oglas {
         return slobodanOd;
     }
 
-    /**
+    public byte[] getSlika() {
+		return slika;
+	}
+
+	public void setSlika(byte[] slika) {
+		this.slika = slika;
+	}
+
+	/**
      * Sets the value of the slobodanOd property.
      * 
      * @param value
