@@ -5,21 +5,31 @@
 // Generated on: 2020.05.28 at 11:40:09 AM CEST 
 //
 
-
 package com.rentacar.car_service.model;
 
 import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -45,245 +55,225 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "id",
-    "markaAutomobila",
-    "modelAutomobila",
-    "klasaAutomobila",
-    "vrstaGoriva",
-    "tipMenjaca",
-    "kilometraza",
-    "dozvoljenaKilometraza",
-    "cdw",
-    "decijaSedista"
-})
+@XmlType(name = "", propOrder = { "id", "markaAutomobila", "modelAutomobila", "klasaAutomobila", "vrstaGoriva",
+		"tipMenjaca", "kilometraza", "dozvoljenaKilometraza", "cdw", "decijaSedista" })
 @XmlRootElement(name = "Automobil")
+@Entity
+@Table(name = "automobili")
 public class Automobil {
 
-    protected long id;
-    @XmlElement(name = "marka_automobila", required = true)
-    protected MarkaAuta markaAutomobila;
-    @XmlElement(name = "model_automobila", required = true)
-    protected ModelAuta modelAutomobila;
-    @XmlElement(name = "klasa_automobila", required = true)
-    protected KlasaAuta klasaAutomobila;
-    @XmlElement(name = "vrsta_goriva", required = true)
-    protected VrstaGoriva vrstaGoriva;
-    @XmlElement(name = "tip_menjaca", required = true)
-    protected TipMenjaca tipMenjaca;
-    protected double kilometraza;
-    @XmlElement(name = "dozvoljena_kilometraza")
-    protected double dozvoljenaKilometraza;
-    protected boolean cdw;
-    @XmlElement(name = "decija_sedista", required = true)
-    protected BigInteger decijaSedista;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected long id;
+	@XmlElement(name = "marka_automobila", required = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "marka_auta_id")
+	protected MarkaAuta markaAutomobila;
+	@XmlElement(name = "model_automobila", required = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "model_auta_id")
+	protected ModelAuta modelAutomobila;
+	@XmlElement(name = "klasa_automobila", required = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "klasa_auta_id")
+	protected KlasaAuta klasaAutomobila;
+	@XmlElement(name = "vrsta_goriva", required = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "vrsta_goriva_id")
+	protected VrstaGoriva vrstaGoriva;
+	@XmlElement(name = "tip_menjaca", required = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tip_menjaca_id")
+	protected TipMenjaca tipMenjaca;
+	protected double kilometraza;
+	@XmlElement(name = "dozvoljena_kilometraza")
+	protected double dozvoljenaKilometraza;
+	protected boolean cdw;
+	@XmlElement(name = "decija_sedista", required = true)
+	protected BigInteger decijaSedista;
 
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public long getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 */
+	public long getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(long value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 */
+	public void setId(long value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the markaAutomobila property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MarkaAuta }
-     *     
-     */
-    public MarkaAuta getMarkaAutomobila() {
-        return markaAutomobila;
-    }
+	/**
+	 * Gets the value of the markaAutomobila property.
+	 * 
+	 * @return possible object is {@link MarkaAuta }
+	 * 
+	 */
+	public MarkaAuta getMarkaAutomobila() {
+		return markaAutomobila;
+	}
 
-    /**
-     * Sets the value of the markaAutomobila property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MarkaAuta }
-     *     
-     */
-    public void setMarkaAutomobila(MarkaAuta value) {
-        this.markaAutomobila = value;
-    }
+	/**
+	 * Sets the value of the markaAutomobila property.
+	 * 
+	 * @param value allowed object is {@link MarkaAuta }
+	 * 
+	 */
+	public void setMarkaAutomobila(MarkaAuta value) {
+		this.markaAutomobila = value;
+	}
 
-    /**
-     * Gets the value of the modelAutomobila property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ModelAuta }
-     *     
-     */
-    public ModelAuta getModelAutomobila() {
-        return modelAutomobila;
-    }
+	/**
+	 * Gets the value of the modelAutomobila property.
+	 * 
+	 * @return possible object is {@link ModelAuta }
+	 * 
+	 */
+	public ModelAuta getModelAutomobila() {
+		return modelAutomobila;
+	}
 
-    /**
-     * Sets the value of the modelAutomobila property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ModelAuta }
-     *     
-     */
-    public void setModelAutomobila(ModelAuta value) {
-        this.modelAutomobila = value;
-    }
+	/**
+	 * Sets the value of the modelAutomobila property.
+	 * 
+	 * @param value allowed object is {@link ModelAuta }
+	 * 
+	 */
+	public void setModelAutomobila(ModelAuta value) {
+		this.modelAutomobila = value;
+	}
 
-    /**
-     * Gets the value of the klasaAutomobila property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link KlasaAuta }
-     *     
-     */
-    public KlasaAuta getKlasaAutomobila() {
-        return klasaAutomobila;
-    }
+	/**
+	 * Gets the value of the klasaAutomobila property.
+	 * 
+	 * @return possible object is {@link KlasaAuta }
+	 * 
+	 */
+	public KlasaAuta getKlasaAutomobila() {
+		return klasaAutomobila;
+	}
 
-    /**
-     * Sets the value of the klasaAutomobila property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link KlasaAuta }
-     *     
-     */
-    public void setKlasaAutomobila(KlasaAuta value) {
-        this.klasaAutomobila = value;
-    }
+	/**
+	 * Sets the value of the klasaAutomobila property.
+	 * 
+	 * @param value allowed object is {@link KlasaAuta }
+	 * 
+	 */
+	public void setKlasaAutomobila(KlasaAuta value) {
+		this.klasaAutomobila = value;
+	}
 
-    /**
-     * Gets the value of the vrstaGoriva property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link VrstaGoriva }
-     *     
-     */
-    public VrstaGoriva getVrstaGoriva() {
-        return vrstaGoriva;
-    }
+	/**
+	 * Gets the value of the vrstaGoriva property.
+	 * 
+	 * @return possible object is {@link VrstaGoriva }
+	 * 
+	 */
+	public VrstaGoriva getVrstaGoriva() {
+		return vrstaGoriva;
+	}
 
-    /**
-     * Sets the value of the vrstaGoriva property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link VrstaGoriva }
-     *     
-     */
-    public void setVrstaGoriva(VrstaGoriva value) {
-        this.vrstaGoriva = value;
-    }
+	/**
+	 * Sets the value of the vrstaGoriva property.
+	 * 
+	 * @param value allowed object is {@link VrstaGoriva }
+	 * 
+	 */
+	public void setVrstaGoriva(VrstaGoriva value) {
+		this.vrstaGoriva = value;
+	}
 
-    /**
-     * Gets the value of the tipMenjaca property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TipMenjaca }
-     *     
-     */
-    public TipMenjaca getTipMenjaca() {
-        return tipMenjaca;
-    }
+	/**
+	 * Gets the value of the tipMenjaca property.
+	 * 
+	 * @return possible object is {@link TipMenjaca }
+	 * 
+	 */
+	public TipMenjaca getTipMenjaca() {
+		return tipMenjaca;
+	}
 
-    /**
-     * Sets the value of the tipMenjaca property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TipMenjaca }
-     *     
-     */
-    public void setTipMenjaca(TipMenjaca value) {
-        this.tipMenjaca = value;
-    }
+	/**
+	 * Sets the value of the tipMenjaca property.
+	 * 
+	 * @param value allowed object is {@link TipMenjaca }
+	 * 
+	 */
+	public void setTipMenjaca(TipMenjaca value) {
+		this.tipMenjaca = value;
+	}
 
-    /**
-     * Gets the value of the kilometraza property.
-     * 
-     */
-    public double getKilometraza() {
-        return kilometraza;
-    }
+	/**
+	 * Gets the value of the kilometraza property.
+	 * 
+	 */
+	public double getKilometraza() {
+		return kilometraza;
+	}
 
-    /**
-     * Sets the value of the kilometraza property.
-     * 
-     */
-    public void setKilometraza(double value) {
-        this.kilometraza = value;
-    }
+	/**
+	 * Sets the value of the kilometraza property.
+	 * 
+	 */
+	public void setKilometraza(double value) {
+		this.kilometraza = value;
+	}
 
-    /**
-     * Gets the value of the dozvoljenaKilometraza property.
-     * 
-     */
-    public double getDozvoljenaKilometraza() {
-        return dozvoljenaKilometraza;
-    }
+	/**
+	 * Gets the value of the dozvoljenaKilometraza property.
+	 * 
+	 */
+	public double getDozvoljenaKilometraza() {
+		return dozvoljenaKilometraza;
+	}
 
-    /**
-     * Sets the value of the dozvoljenaKilometraza property.
-     * 
-     */
-    public void setDozvoljenaKilometraza(double value) {
-        this.dozvoljenaKilometraza = value;
-    }
+	/**
+	 * Sets the value of the dozvoljenaKilometraza property.
+	 * 
+	 */
+	public void setDozvoljenaKilometraza(double value) {
+		this.dozvoljenaKilometraza = value;
+	}
 
-    /**
-     * Gets the value of the cdw property.
-     * 
-     */
-    public boolean isCdw() {
-        return cdw;
-    }
+	/**
+	 * Gets the value of the cdw property.
+	 * 
+	 */
+	public boolean isCdw() {
+		return cdw;
+	}
 
-    /**
-     * Sets the value of the cdw property.
-     * 
-     */
-    public void setCdw(boolean value) {
-        this.cdw = value;
-    }
+	/**
+	 * Sets the value of the cdw property.
+	 * 
+	 */
+	public void setCdw(boolean value) {
+		this.cdw = value;
+	}
 
-    /**
-     * Gets the value of the decijaSedista property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getDecijaSedista() {
-        return decijaSedista;
-    }
+	/**
+	 * Gets the value of the decijaSedista property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getDecijaSedista() {
+		return decijaSedista;
+	}
 
-    /**
-     * Sets the value of the decijaSedista property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setDecijaSedista(BigInteger value) {
-        this.decijaSedista = value;
-    }
+	/**
+	 * Sets the value of the decijaSedista property.
+	 * 
+	 * @param value allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setDecijaSedista(BigInteger value) {
+		this.decijaSedista = value;
+	}
 
 }
