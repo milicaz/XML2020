@@ -15,6 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -69,10 +73,14 @@ public class Oglas {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(name = "Automobil", required = true)
+    @ManyToOne
+    @JoinColumn(name = "auto_id", nullable = false)
     protected Automobil automobil;
     @XmlElement(required = true)
     protected Korisnik korisnik;
     @XmlElement(name = "Cenovnik", required = true)
+    @OneToOne
+    @JoinColumn(name = "cenovnik_id", nullable = false)
     protected Cenovnik cenovnik;
     @XmlElement(required = true)
     protected List<Object> slika;
