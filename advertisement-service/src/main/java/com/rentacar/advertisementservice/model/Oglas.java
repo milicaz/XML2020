@@ -9,6 +9,7 @@
 package com.rentacar.advertisementservice.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -85,14 +86,13 @@ public class Oglas {
     @JoinColumn(name = "cenovnik_id", nullable = false)
     protected Cenovnik cenovnik;
     @XmlElement(required = true)
-    @OneToMany
     protected byte[] slika;
     @XmlElement(name = "slobodan_od", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar slobodanOd;
+    protected Date slobodanOd;
     @XmlElement(name = "slobodan_do", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar slobodanDo;
+    protected Date slobodanDo;
 
     /**
      * Gets the value of the id property.
@@ -204,6 +204,14 @@ public class Oglas {
      * 
      * 
      */
+    
+    public byte[] getSlika() {
+		return slika;
+	}
+
+	public void setSlika(byte[] slika) {
+		this.slika = slika;
+	}
 
     /**
      * Gets the value of the slobodanOd property.
@@ -213,17 +221,11 @@ public class Oglas {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getSlobodanOd() {
+    
+    
+    public Date getSlobodanOd() {
         return slobodanOd;
     }
-
-    public byte[] getSlika() {
-		return slika;
-	}
-
-	public void setSlika(byte[] slika) {
-		this.slika = slika;
-	}
 
 	/**
      * Sets the value of the slobodanOd property.
@@ -233,7 +235,7 @@ public class Oglas {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setSlobodanOd(XMLGregorianCalendar value) {
+    public void setSlobodanOd(Date value) {
         this.slobodanOd = value;
     }
 
@@ -245,7 +247,7 @@ public class Oglas {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getSlobodanDo() {
+    public Date getSlobodanDo() {
         return slobodanDo;
     }
 
@@ -257,7 +259,7 @@ public class Oglas {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setSlobodanDo(XMLGregorianCalendar value) {
+    public void setSlobodanDo(Date value) {
         this.slobodanDo = value;
     }
 
