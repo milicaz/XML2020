@@ -24,7 +24,7 @@ public class OglasController {
 	
 	@GetMapping("/oglas/{id}")
 	public Oglas find(@PathVariable Long id){
-		return oglasService.findOne(id);
+		return oglasService.findOneById(id);
 	}
 	
 	@DeleteMapping("/oglas/{id}")

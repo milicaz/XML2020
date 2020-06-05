@@ -13,5 +13,5 @@ public interface OglasRepository extends JpaRepository<Oglas, Long> {
 
 	List<Oglas> findAll();
 	
-	Oglas findOne(Long id);
+	Oglas findOneById(Long id);
 }

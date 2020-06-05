@@ -11,6 +11,7 @@ package com.rentacar.advertisementservice.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -65,8 +67,7 @@ public class MarkaAuta {
     @Column(nullable = false)
     protected String ime;
     @XmlElement(required = true)
-    @ManyToOne
-    @JoinColumn(name = "model_auta_id", nullable = true)
+    @OneToMany(mappedBy = "markaAuta", cascade = CascadeType.ALL, orphanRemoval = true)
     protected List<ModelAuta> modeli;
 
     /**

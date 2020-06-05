@@ -7,7 +7,7 @@ import com.rentacar.advertisementservice.model.Oglas;
 
 public interface OglasService {
 
-	Oglas findOne(Long id);
+	Oglas findOneById(Long id);
 	
 	List<Oglas> findAll();
 	

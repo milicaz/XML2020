@@ -16,8 +16,8 @@ public class OglasServiceImpl implements OglasService{
 	private OglasRepository oglasRepo;
 	
 	@Override
-	public Oglas findOne(Long id) {
-		return oglasRepo.findOne(id);
+	public Oglas findOneById(Long id) {
+		return oglasRepo.findOneById(id);
 	}
 	
 	@Override
