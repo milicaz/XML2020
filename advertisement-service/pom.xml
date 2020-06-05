@@ -12,6 +12,7 @@
 	<groupId>com.rentacar.advertisement-service</groupId>
 	<artifactId>advertisement-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>advertisement-service</name>
 	<description>Advertisement service</description>
 
@@ -37,7 +38,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
