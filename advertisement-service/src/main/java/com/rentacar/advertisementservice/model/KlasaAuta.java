@@ -10,6 +10,13 @@ package com.rentacar.advertisementservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -43,13 +50,16 @@ import javax.xml.bind.annotation.XmlType;
     "ime",
     "automobil"
 })
+@Entity
+@Table(name = "klasa_auta")
 public class KlasaAuta {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(required = true)
+    @Column(nullable = false)
     protected String ime;
-    @XmlElement(name = "Automobil", required = true)
-    protected List<Automobil> automobil;
 
     /**
      * Gets the value of the id property.
@@ -113,11 +123,5 @@ public class KlasaAuta {
      * 
      * 
      */
-    public List<Automobil> getAutomobil() {
-        if (automobil == null) {
-            automobil = new ArrayList<Automobil>();
-        }
-        return this.automobil;
-    }
 
 }

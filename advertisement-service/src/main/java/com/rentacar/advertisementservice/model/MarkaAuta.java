@@ -10,6 +10,15 @@ package com.rentacar.advertisementservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -45,14 +54,19 @@ import javax.xml.bind.annotation.XmlType;
     "automobil",
     "modeli"
 })
+@Entity
+@Table(name = "marka_auta")
 public class MarkaAuta {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(required = true)
+    @Column(nullable = false)
     protected String ime;
-    @XmlElement(name = "Automobil", required = true)
-    protected List<Automobil> automobil;
     @XmlElement(required = true)
+    @ManyToOne
+    @JoinColumn(name = "model_auta_id", nullable = true)
     protected List<ModelAuta> modeli;
 
     /**
@@ -117,12 +131,6 @@ public class MarkaAuta {
      * 
      * 
      */
-    public List<Automobil> getAutomobil() {
-        if (automobil == null) {
-            automobil = new ArrayList<Automobil>();
-        }
-        return this.automobil;
-    }
 
     /**
      * Gets the value of the modeli property.

@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -72,14 +74,24 @@ public class Automobil {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(name = "marka_automobila", required = true)
+    @ManyToOne
+    @JoinColumn(name = "marka_automobila_id", nullable = false)
     protected MarkaAuta markaAutomobila;
     @XmlElement(name = "model_automobila", required = true)
+    @ManyToOne
+    @JoinColumn(name = "model_automobila_id", nullable = false)
     protected ModelAuta modelAutomobila;
     @XmlElement(name = "klasa_automobila", required = true)
+    @ManyToOne
+    @JoinColumn(name = "klasa_automobila_id", nullable = false)
     protected KlasaAuta klasaAutomobila;
     @XmlElement(name = "vrsta_goriva", required = true)
+    @ManyToOne
+    @JoinColumn(name = "vrsta_goriva_id", nullable = false)
     protected VrstaGoriva vrstaGoriva;
     @XmlElement(name = "tip_menjaca", required = true)
+    @ManyToOne
+    @JoinColumn(name = "tip_menjaca_id", nullable = false)
     protected TipMenjaca tipMenjaca;
     protected double kilometraza;
     @XmlElement(name = "dozvoljena_kilometraza")

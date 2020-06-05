@@ -9,6 +9,11 @@
 package com.rentacar.advertisementservice.model;
 
 import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -44,8 +49,12 @@ import javax.xml.bind.annotation.XmlType;
     "mesto",
     "drzava"
 })
+@Entity
 public class Adresa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected long id;
     @XmlElement(required = true)
     protected String ulica;
     @XmlElement(required = true)

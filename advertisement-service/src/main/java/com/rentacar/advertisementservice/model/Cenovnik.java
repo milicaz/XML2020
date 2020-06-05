@@ -8,10 +8,14 @@
 
 package com.rentacar.advertisementservice.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -71,20 +75,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 @XmlRootElement(name = "Cenovnik")
 @Entity
-@Table(name = "cenovnivi")
+@Table(name = "cenovnici")
 public class Cenovnik {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
+	@ManyToOne
+	@JoinColumn(name = "auto_id", nullable = true)
     @XmlElement(name = "Automobil", required = true)
     protected Automobil automobil;
     @XmlElement(name = "datum_od", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumOd;
+    protected Date datumOd;
     @XmlElement(name = "datum_do", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumDo;
+    protected Date datumDo;
     @XmlElement(name = "cena_po_danu")
     protected double cenaPoDanu;
     @XmlElement(name = "cena_po_kilometru")
@@ -140,7 +146,7 @@ public class Cenovnik {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getDatumOd() {
+    public Date getDatumOd() {
         return datumOd;
     }
 
@@ -152,7 +158,7 @@ public class Cenovnik {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDatumOd(XMLGregorianCalendar value) {
+    public void setDatumOd(Date value) {
         this.datumOd = value;
     }
 
@@ -164,7 +170,7 @@ public class Cenovnik {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getDatumDo() {
+    public Date getDatumDo() {
         return datumDo;
     }
 
@@ -176,7 +182,7 @@ public class Cenovnik {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDatumDo(XMLGregorianCalendar value) {
+    public void setDatumDo(Date value) {
         this.datumDo = value;
     }
 

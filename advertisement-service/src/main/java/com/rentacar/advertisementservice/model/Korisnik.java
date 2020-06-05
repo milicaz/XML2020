@@ -8,6 +8,7 @@
 
 package com.rentacar.advertisementservice.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -90,6 +92,7 @@ public abstract class Korisnik {
     @XmlElement(required = true)
     protected String prezime;
     @XmlElement(required = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     protected Adresa adresa;
 
     /**
