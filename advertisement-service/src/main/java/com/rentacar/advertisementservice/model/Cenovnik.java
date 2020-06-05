@@ -8,6 +8,8 @@
 
 package com.rentacar.advertisementservice.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -65,6 +67,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "cenaZaCdw"
 })
 @XmlRootElement(name = "Cenovnik")
+@Entity
+@Table(name = "cenovnivi")
 public class Cenovnik {
 
     protected long id;

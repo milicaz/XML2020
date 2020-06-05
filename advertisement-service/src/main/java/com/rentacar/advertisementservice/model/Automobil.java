@@ -9,6 +9,9 @@
 package com.rentacar.advertisementservice.model;
 
 import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -58,6 +61,8 @@ import javax.xml.bind.annotation.XmlType;
     "decijaSedista"
 })
 @XmlRootElement(name = "Automobil")
+@Entity
+@Table(name = "automobili")
 public class Automobil {
 
     protected long id;
