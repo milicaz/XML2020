@@ -5,7 +5,6 @@
 // Generated on: 2020.05.28 at 11:40:09 AM CEST 
 //
 
-
 package com.rentacar.auth_service.model;
 
 import javax.persistence.Column;
@@ -16,11 +15,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Agent complex type.
+ * <p>
+ * Java class for Agent complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Agent">
@@ -47,63 +48,53 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Agent")
 @Entity
 @DiscriminatorValue("AGENT")
-public class Agent
-    extends Korisnik
-{
+public class Agent extends Korisnik {
 
-    @XmlAttribute(name = "poslovni_broj")
-    @Column(nullable = false)
-    protected String poslovniBroj;
-    @XmlAttribute(name = "naziv_firme")
-    @Column(nullable = false)
-    protected String nazivFirme;
+	@XmlAttribute(name = "poslovni_broj")
+	@Column(nullable = false)
+	protected String poslovniBroj;
+	@XmlAttribute(name = "naziv_firme")
+	@Column(nullable = false)
+	protected String nazivFirme;
 
-    /**
-     * Gets the value of the poslovniBroj property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPoslovniBroj() {
-        return poslovniBroj;
-    }
+	/**
+	 * Gets the value of the poslovniBroj property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPoslovniBroj() {
+		return poslovniBroj;
+	}
 
-    /**
-     * Sets the value of the poslovniBroj property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPoslovniBroj(String value) {
-        this.poslovniBroj = value;
-    }
+	/**
+	 * Sets the value of the poslovniBroj property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setPoslovniBroj(String value) {
+		this.poslovniBroj = value;
+	}
 
-    /**
-     * Gets the value of the nazivFirme property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNazivFirme() {
-        return nazivFirme;
-    }
+	/**
+	 * Gets the value of the nazivFirme property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNazivFirme() {
+		return nazivFirme;
+	}
 
-    /**
-     * Sets the value of the nazivFirme property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNazivFirme(String value) {
-        this.nazivFirme = value;
-    }
+	/**
+	 * Sets the value of the nazivFirme property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setNazivFirme(String value) {
+		this.nazivFirme = value;
+	}
 
 }

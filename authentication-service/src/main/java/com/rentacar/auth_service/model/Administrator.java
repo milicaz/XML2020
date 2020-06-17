@@ -5,7 +5,6 @@
 // Generated on: 2020.05.28 at 11:40:09 AM CEST 
 //
 
-
 package com.rentacar.auth_service.model;
 
 import javax.persistence.DiscriminatorValue;
@@ -15,11 +14,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Administrator complex type.
+ * <p>
+ * Java class for Administrator complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Administrator">
@@ -36,9 +37,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Administrator")
 @Entity
 @DiscriminatorValue("ADMIN")
-public class Administrator
-    extends Korisnik
-{
-
+public class Administrator extends Korisnik {
 
 }

@@ -5,9 +5,9 @@
 // Generated on: 2020.05.28 at 11:40:09 AM CEST 
 //
 
-
 package com.rentacar.auth_service.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,18 +15,20 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
+import org.hibernate.validator.constraints.Range;
 
 /**
- * <p>Java class for KrajnjiKorisnik complex type.
+ * <p>
+ * Java class for KrajnjiKorisnik complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="KrajnjiKorisnik">
  *   &lt;complexContent>
  *     &lt;extension base="{rentacar}Korisnik">
- *       &lt;attribute name="aktivan" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="blokiran" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="broj_ograsa">
  *         &lt;simpleType>
  *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}integer">
@@ -46,87 +48,31 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "KrajnjiKorisnik")
 @Entity
 @DiscriminatorValue("KRAJNJI_KORISNIK")
-public class KrajnjiKorisnik
-    extends Korisnik
-{
+public class KrajnjiKorisnik extends Korisnik {
 
-    @XmlAttribute(name = "aktivan")
-    protected Boolean aktivan;
-    @XmlAttribute(name = "blokiran")
-    protected Boolean blokiran;
-    @XmlAttribute(name = "broj_ograsa")
-    protected Integer brojOgrasa;
+	@XmlAttribute(name = "broj_ograsa")
+	@Column
+	@Range(min = 0, max = 3)
+	protected Integer brojOgrasa;
 
-    /**
-     * Gets the value of the aktivan property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isAktivan() {
-        return aktivan;
-    }
+	/**
+	 * Gets the value of the brojOgrasa property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getBrojOgrasa() {
+		return brojOgrasa;
+	}
 
-    /**
-     * Sets the value of the aktivan property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setAktivan(Boolean value) {
-        this.aktivan = value;
-    }
-    
-    /**
-     * Gets the value of the blokiran property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isBlokiran() {
-        return blokiran;
-    }
-
-    /**
-     * Sets the value of the blokiran property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setBlokiran(Boolean value) {
-        this.blokiran = value;
-    }
-
-    /**
-     * Gets the value of the brojOgrasa property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getBrojOgrasa() {
-        return brojOgrasa;
-    }
-
-    /**
-     * Sets the value of the brojOgrasa property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setBrojOgrasa(Integer value) {
-        this.brojOgrasa = value;
-    }
+	/**
+	 * Sets the value of the brojOgrasa property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setBrojOgrasa(Integer value) {
+		this.brojOgrasa = value;
+	}
 
 }
