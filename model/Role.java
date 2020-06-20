@@ -17,18 +17,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for VrstaGoriva complex type.
+ * <p>Java class for Role complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="VrstaGoriva">
+ * &lt;complexType name="Role">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element ref="{rentacar}Automobil" maxOccurs="unbounded"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="privilegije" type="{rentacar}Privilege" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,18 +38,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "VrstaGoriva", propOrder = {
+@XmlType(name = "Role", propOrder = {
     "id",
-    "ime",
-    "automobil"
+    "name",
+    "privilegije"
 })
-public class VrstaGoriva {
+public class Role {
 
     protected long id;
     @XmlElement(required = true)
-    protected String ime;
-    @XmlElement(name = "Automobil", required = true)
-    protected List<Automobil> automobil;
+    protected String name;
+    protected List<Privilege> privilegije;
 
     /**
      * Gets the value of the id property.
@@ -68,56 +67,56 @@ public class VrstaGoriva {
     }
 
     /**
-     * Gets the value of the ime property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIme() {
-        return ime;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the ime property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIme(String value) {
-        this.ime = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
-     * Gets the value of the automobil property.
+     * Gets the value of the privilegije property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the automobil property.
+     * This is why there is not a <CODE>set</CODE> method for the privilegije property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAutomobil().add(newItem);
+     *    getPrivilegije().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Automobil }
+     * {@link Privilege }
      * 
      * 
      */
-    public List<Automobil> getAutomobil() {
-        if (automobil == null) {
-            automobil = new ArrayList<Automobil>();
+    public List<Privilege> getPrivilegije() {
+        if (privilegije == null) {
+            privilegije = new ArrayList<Privilege>();
         }
-        return this.automobil;
+        return this.privilegije;
     }
 
 }

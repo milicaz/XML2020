@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="rentacar" xmlns:rac="rentacar">
 
-    <xs:complexType abstract="true" name="Korisnik">
+    <xs:complexType name="Korisnik">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="username" type="xs:string"/>
@@ -17,10 +17,16 @@
             <xs:element name="ime" type="xs:string"/>
             <xs:element name="prezime" type="xs:string"/>
             <xs:element name="adresa" type="rac:Adresa"/>
+            <xs:element name="role" type="xs:string"/>
+            <xs:element name="enabled" type="xs:boolean"/>
+            <xs:element name="blocked" type="xs:boolean"/>
+            <xs:element name="deleted" type="xs:boolean"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="roles" type="rac:Role"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Adresa">
         <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
             <xs:element name="ulica" type="xs:string"/>
             <xs:element name="broj" type="xs:integer"/>
             <xs:element name="mesto" type="xs:string"/>
@@ -62,6 +68,20 @@
                 </xs:attribute>
             </xs:extension>
         </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Privilege">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Role">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="privilegije" type="rac:Privilege"
+            />
+        </xs:sequence>
     </xs:complexType>
     <xs:element name="Automobil">
         <xs:complexType>
