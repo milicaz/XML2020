@@ -10,7 +10,6 @@ import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.rentacar.auth_service.model.Role;
 import com.rentacar.auth_service.model.Korisnik;
 
 import io.jsonwebtoken.Claims;

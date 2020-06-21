@@ -77,7 +77,7 @@ public class AuthController {
 			HttpEntity<JwtAuthenticationRequest> httpRequest = new HttpEntity<>(authRequest, headers);
 			if (korisnik.getRole().equals("ROLE_AGENT")) {
 				System.out.println("Agent se loguje");
-				ResponseEntity<?> agentResponse = restTemplate.postForEntity("http://agent-backend/", httpRequest,
+				ResponseEntity<?> agentResponse = restTemplate.postForEntity("http://agent-backend/agentAuth/setAuthentication", httpRequest,
 						JwtAuthenticationRequest.class);
 			} else {
 				System.out.println("Admin ili klijent se loguju");
