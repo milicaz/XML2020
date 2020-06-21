@@ -81,7 +81,7 @@ public class AuthController {
 						JwtAuthenticationRequest.class);
 			} else {
 				System.out.println("Admin ili klijent se loguju");
-				ResponseEntity<?> akResponse = restTemplate.postForEntity("http://", httpRequest,
+				ResponseEntity<?> akResponse = restTemplate.postForEntity("http://rentacar-backend/api/korisnikAuth/setAuthentication", httpRequest,
 						JwtAuthenticationRequest.class);
 			}
 
@@ -116,10 +116,10 @@ public class AuthController {
 
 		if (korisnik.getRole().equals("ROLE_AGENT")) {
 			System.out.println("Agent je ulogovan");
-			restTemplate.getForEntity("http://agent-backend/", void.class);
+			restTemplate.getForEntity("http://agent-backend/agentAuth/logout", void.class);
 		} else {
 			System.out.println("Admin ili klijent je ulogovan");
-			restTemplate.getForEntity("http://", void.class);
+			restTemplate.getForEntity("http://rentacar-backend/api/korisnikAuth/logout", void.class);
 		}
 		SecurityContextHolder.clearContext();
 
