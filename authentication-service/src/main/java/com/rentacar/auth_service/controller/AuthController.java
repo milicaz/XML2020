@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Context;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +19,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,7 +38,7 @@ import com.rentacar.auth_service.service.KorisnikService;
 
 @RestController
 @RequestMapping(value = "/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:4202" })
 public class AuthController {
 
 	@Autowired
@@ -49,29 +52,40 @@ public class AuthController {
 
 	@Autowired
 	private RestTemplate restTemplate;
-
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> loginKorisnik(@RequestBody JwtAuthenticationRequest authRequest,
 			HttpServletRequest request, HttpServletResponse response, Device device) {
-		System.out.println("Usao je u login u AuthController");
+		
+		System.out.println("-------------Usao je u login u AuthController------------------");
+		
 		if (!checkUsername(authRequest.getUsername())) {
 			System.out.println("Username sadrzi karaktere koje ne moze da sadrzi");
 			return new ResponseEntity<>(new KorisnikTokenState("error", 0), HttpStatus.NOT_FOUND);
 		}
-		System.out.println(authRequest.getUsername());
-
+		
 		Korisnik korisnik = ks.findOneByUsername(authRequest.getUsername());
+		
+		System.out.println("Passwordi su: " + passwordEncoder.matches(authRequest.getPassword(), korisnik.getPassword()));
 
 		if (korisnik != null) {
-			if (BCrypt.checkpw(authRequest.getPassword(), korisnik.getPassword())) {
+			System.out.println("--------------Usao sam u not null-------------------");
+			//if (BCrypt.checkpw(authRequest.getPassword(), korisnik.getPassword())) {
+			if (passwordEncoder.matches(authRequest.getPassword(), korisnik.getPassword())) {
+				System.out.println("----------Prosli su passwordi-------------");
 				System.out.println("Uspesna prijava: username: " + korisnik.getUsername());
 			} else {
 				return new ResponseEntity<>(new KorisnikTokenState("error", 0), HttpStatus.OK);
 			}
 
 			if (!korisnik.isEnabled()) {
+				System.out.println("--------Korisnik nije aktivan---------");
 				return new ResponseEntity<>(new KorisnikTokenState("Not activated", 0), HttpStatus.OK);
 			}
+			
 			MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
 			headers.add("Content-Type", "application/json");
 			HttpEntity<JwtAuthenticationRequest> httpRequest = new HttpEntity<>(authRequest, headers);
@@ -81,7 +95,7 @@ public class AuthController {
 						JwtAuthenticationRequest.class);
 			} else {
 				System.out.println("Admin ili klijent se loguju");
-				ResponseEntity<?> akResponse = restTemplate.postForEntity("http://rentacar-backend/api/korisnikAuth/setAuthentication", httpRequest,
+				ResponseEntity<?> akResponse = restTemplate.postForEntity("http://rentacar-backend/korisnikAuth/setAuthentication", httpRequest,
 						JwtAuthenticationRequest.class);
 			}
 
@@ -99,7 +113,7 @@ public class AuthController {
 			Korisnik kor = (Korisnik) authentication.getPrincipal();
 			String jwt = tokenHelper.generateToken(kor.getUsername(), device);
 			int expiresIn = tokenHelper.getExpiredIn(device);
-
+			System.out.println("Token je: " + jwt);
 			return ResponseEntity.ok(new KorisnikTokenState(jwt, expiresIn));
 		} else {
 			System.out.println("User je null");
@@ -119,7 +133,7 @@ public class AuthController {
 			restTemplate.getForEntity("http://agent-backend/agentAuth/logout", void.class);
 		} else {
 			System.out.println("Admin ili klijent je ulogovan");
-			restTemplate.getForEntity("http://rentacar-backend/api/korisnikAuth/logout", void.class);
+			restTemplate.getForEntity("http://rentacar-backend/korisnikAuth/logout", void.class);
 		}
 		SecurityContextHolder.clearContext();
 
@@ -142,5 +156,4 @@ public class AuthController {
 		}
 		return true;
 	}
-
 }

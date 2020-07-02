@@ -20,7 +20,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class TokenHelper {
 
-	@Value("rentacar")
+	@Value("authentication-service")
 	private String APP_NAME;
 	@Value("somesecret")
 	private String SECRET;

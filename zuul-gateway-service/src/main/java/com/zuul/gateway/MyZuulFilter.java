@@ -2,10 +2,13 @@ package com.zuul.gateway;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
+@Component
 public class MyZuulFilter extends ZuulFilter {
 
 	@Override

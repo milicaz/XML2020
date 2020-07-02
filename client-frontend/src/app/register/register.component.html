@@ -1,0 +1,108 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="registrationForm">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <h2 class="text-center">Registracija</h2>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Username</label>
+                            <input type="username" formControlName="username"
+                                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" name="username"
+                                id="username" class="form-control" placeholder="Username" required>
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Email</label>
+                            <input type="email" formControlName="email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" name="email" id="email"
+                                class="form-control" placeholder="Email" required>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Ovo polje je obavezno.</div>
+                                <div *ngIf="f.email.errors.email">Ovo polje mora biti validna email adresa.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Password</label>
+                            <input type="password" formControlName="password"
+                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" name="password"
+                                id="password" class="form-control" placeholder="Password" required>
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Ovo polje je obavezno.</div>
+                                <div *ngIf="f.password.errors.minlength">Password mora imati najmanje 8 karaktera.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Ime</label>
+                            <input type="text" formControlName="ime"
+                                [ngClass]="{ 'is-invalid': submitted && f.ime.errors }" name="ime" id="ime"
+                                class="form-control" placeholder="Ime" required>
+                            <div *ngIf="submitted && f.ime.errors" class="invalid-feedback">
+                                <div *ngIf="f.ime.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Prezime</label>
+                            <input type="text" formControlName="prezime"
+                                [ngClass]="{ 'is-invalid': submitted && f.prezime.errors }" name="prezime" id="prezime"
+                                class="form-control" placeholder="Prezime" required>
+                            <div *ngIf="submitted && f.prezime.errors" class="invalid-feedback">
+                                <div *ngIf="f.ime.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <label>Ulica</label>
+                            <input type="text" formControlName="ulica"
+                                [ngClass]="{ 'is-invalid': submitted && f.ulica.errors }" name="ulica" id="ulica"
+                                class="form-control" placeholder="Kraljevica Marka" required>
+                            <div *ngIf="submitted && f.ulica.errors" class="invalid-feedback">
+                                <div *ngIf="f.ulica.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Broj</label>
+                            <input type="text" formControlName="broj"
+                                [ngClass]="{ 'is-invalid': submitted && f.broj.errors }" name="broj" id="broj"
+                                class="form-control" placeholder="55a" required>
+                            <div *ngIf="submitted && f.broj.errors" class="invalid-feedback">
+                                <div *ngIf="f.broj.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Mesto</label>
+                            <input type="text" formControlName="mesto"
+                                [ngClass]="{ 'is-invalid': submitted && f.mesto.errors }" name="mesto" id="mesto"
+                                class="form-control" required>
+                            <div *ngIf="submitted && f.mesto.errors" class="invalid-feedback">
+                                <div *ngIf="f.mesto.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Drzava</label>
+                            <input type="text" formControlName="drzava"
+                                [ngClass]="{ 'is-invalid': submitted && f.drzava.errors }" name="drzava" id="drzava"
+                                class="form-control" required>
+                            <div *ngIf="submitted && f.drzava.errors" class="invalid-feedback">
+                                <div *ngIf="f.drzava.errors.required">Ovo polje je obavezno.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registracija</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

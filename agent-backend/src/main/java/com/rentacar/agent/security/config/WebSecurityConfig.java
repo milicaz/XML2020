@@ -105,7 +105,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-		WebMvcConfigurer.super.addArgumentResolvers(resolvers);
+		resolvers.add(deviceHandlerMethodArgumentResolver());
 	}
 
 	

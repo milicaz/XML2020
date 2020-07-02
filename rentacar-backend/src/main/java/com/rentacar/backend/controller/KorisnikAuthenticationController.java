@@ -26,7 +26,7 @@ import com.rentacar.backend.security.auth.JwtAuthenticationRequest;
 import com.rentacar.backend.service.CustomUserDetailsService;
 
 @RestController
-@RequestMapping(value = "api/korisnikAuth")
+@RequestMapping(value = "korisnikAuth")
 @CrossOrigin(origins = { "http://localhost:4200, http://localhost:4201" })
 public class KorisnikAuthenticationController {
 
@@ -57,7 +57,7 @@ public class KorisnikAuthenticationController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/userprofile", method = RequestMethod.POST)
+	@RequestMapping(value = "/userProfile", method = RequestMethod.POST)
 	public ResponseEntity<?> getProfile(@RequestBody String token) {
 
 		System.out.println("IMA TOKEN: " + token);

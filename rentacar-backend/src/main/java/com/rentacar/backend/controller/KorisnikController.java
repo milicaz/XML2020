@@ -28,7 +28,7 @@ import com.rentacar.backend.service.RoleService;
 
 @RestController
 @RequestMapping(value = "api/users")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4201")
 public class KorisnikController {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class KorisnikController {
 	@Autowired
 	private AdresaService adresaService;
 
-	@CrossOrigin(origins = "http://localhost:4201")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/registration", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> registerUser(@Valid @RequestBody Korisnik korisnik, BindingResult result) {
 		System.out.println("Dosao u registrujKorisnika");

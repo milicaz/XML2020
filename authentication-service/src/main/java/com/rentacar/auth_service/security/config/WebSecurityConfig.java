@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -49,9 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 	}
 
 	// definisemo nacin autentifikacije
-	@Autowired
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	@Autowired	
+	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
 	}
 
@@ -87,7 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 						BasicAuthenticationFilter.class);
 		http.csrf().disable();
 	}
-
+	
 	@Bean
 	public DeviceResolverHandlerInterceptor deviceResolverHandlerInterceptor() {
 		return new DeviceResolverHandlerInterceptor();
@@ -100,14 +100,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		// TODO Auto-generated method stub
-		WebMvcConfigurer.super.addInterceptors(registry);
+		registry.addInterceptor(deviceResolverHandlerInterceptor());
 	}
 
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-		// TODO Auto-generated method stub
-		WebMvcConfigurer.super.addArgumentResolvers(resolvers);
+		resolvers.add(deviceHandlerMethodArgumentResolver());
 	}
 
 }

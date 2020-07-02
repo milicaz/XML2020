@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// TokenAuthenticationFilter ce ignorisati sve ispod navedene putanje
-		web.ignoring().antMatchers(HttpMethod.POST, "/api/korisnikAuth/setAuthentication");
+		web.ignoring().antMatchers(HttpMethod.POST, "/korisnikAuth/setAuthentication");
 		web.ignoring().antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html",
 				"/**/*.css", "/**/*.js");
 	}
@@ -79,7 +79,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 				// za neautorizovane zahteve posalji 401 gresku
 				.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 				// svim korisnicima dopusti da pristupe putanjama /auth/** i /ws/**
-				.authorizeRequests().antMatchers("/api/korisnikAuth/**").permitAll().antMatchers("/ws/**").permitAll()
+				.authorizeRequests().antMatchers("/korisnikAuth/**").permitAll().antMatchers("/api/**").permitAll()
+				.antMatchers("/ws/**").permitAll()
 				// svaki zahtev mora biti autorizovan
 				.anyRequest().authenticated().and()
 				// presretni svaki zahtev filterom
@@ -105,9 +106,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
 
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-		WebMvcConfigurer.super.addArgumentResolvers(resolvers);
+		resolvers.add(deviceHandlerMethodArgumentResolver());
 	}
-
-	
 
 }
