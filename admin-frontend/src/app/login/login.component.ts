@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   loginUser() {
-    console.log('Dodavanje ' + this.korisnik.username + ' , pass: ' + this.korisnik.password);
+    console.log('Dodavanje username: ' + this.korisnik.username + ' , pass: ' + this.korisnik.password);
     this.userService.loginUser(this.korisnik).subscribe(
       data => {
         this.checkUser(data);
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       console.log('account active error');
       this.htmlString = 'Vas account nije jos aktiviran.';
     } else {
-      console.log('accessToken  ' + userToken.accessToken);
+      console.log('accessToken je:  ' + userToken.accessToken);
       this.authService.setJwtToken(userToken.accessToken);
       this.userService.getLogged(userToken.accessToken).subscribe(
         data => {

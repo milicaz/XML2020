@@ -27,7 +27,7 @@ import com.rentacar.backend.service.CustomUserDetailsService;
 
 @RestController
 @RequestMapping(value = "korisnikAuth")
-@CrossOrigin(origins = { "http://localhost:4200, http://localhost:4201" })
+@CrossOrigin(origins = { "http://localhost:4200" , "http://localhost:4201" })
 public class KorisnikAuthenticationController {
 
 	@Autowired
