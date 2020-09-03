@@ -2,17 +2,381 @@
     <span class="navbar-brand mb-0 h1">RentACar - admin app</span>
     <div class="container">
         <ul class="navbar-nav">
-            <li class="nav item nav-link" [hidden]="notLogged"><a class="btn btn-dark"><span class="fa fa-car"></span> Moja vozila</a></li>
-            <li class="nav item nav-link" [hidden]="notLogged"><a class="btn btn-dark"><span class="fa fa-bookmark"></span> Rezervacije</a></li>
-            <li class="nav item nav-link" [hidden]="notLogged"><a class="btn btn-dark"><span class="fa fa-envelope"></span> Poruke</a></li>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"><span class="fa fa-user"></span> Korisnici </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==1}" (click)="addAgent()">
+                        Registracija agenta/firme</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==2}" (click)="loadUsers()">
+                        Ucitaj korisnike</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown" [hidden]="notLogged">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"><span class="fa fa-car"></span> Sifarnik </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==3}"
+                        (click)="addKlasaAuta()">Klasa
+                        automobila</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==4}"
+                        (click)="addMarkaAuta()">Marka
+                        automobila</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==5}"
+                        (click)="addModelAuta()">Model
+                        automobila</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==6}"
+                        (click)="addTipMenjaca()">Tip
+                        menjaca</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" role="button" [ngClass]="{'pressed': show==7}"
+                        (click)="addVrstaGoriva()">Vrsta
+                        goriva</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown" [hidden]="notLogged">
+                <a class="nav-link" role="button" [ngClass]="{'pressed': show==8}" (click)="loadComments()"><span
+                        class="fa fa-comment"></span> Komentari</a>
+            </div>
         </ul>
         <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item nav-link" *ngIf="notLogged"><a class="btn btn-dark" href=" "><span class="fa fa-sign-in"></span> Log in</a></li>
-            <li class="nav-item nav-link" *ngIf="logged"><a class="btn btn-dark" (click)="logOutUser()"><span class="fa fa-sign-out"></span> Log out</a></li>
+            <li class="nav-item nav-link" *ngIf="notLogged"><a class="btn btn-dark" href=" "><span
+                        class="fa fa-sign-in"></span> Log in</a></li>
+            <li class="nav-item nav-link" *ngIf="logged"><a class="btn btn-dark" (click)="logOutUser()"><span
+                        class="fa fa-sign-out"></span> Log out</a></li>
         </ul>
     </div>
 </nav>
+<br>
+<br>
 <div class="container">
-    <p>Ovde cemo staviti ostalo</p>
 
+    <!-- Forme za korisnike -->
+
+    <div class="container" *ngIf="show==1">
+        <form [formGroup]="agentForm" (ngSubmit)="onSubmitAgent()">
+            <h2 class="text-center">Registracija agenta/firme</h2>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>Username</label>
+                    <input type="username" formControlName="username"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" name="username" id="username"
+                        class="form-control" placeholder="Username" required>
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Email</label>
+                    <input type="email" formControlName="email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" name="email" id="email"
+                        class="form-control" placeholder="Email" required>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Ovo polje je obavezno.</div>
+                        <div *ngIf="f.email.errors.email">Ovo polje mora biti validna email adresa.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Password</label>
+                    <input type="password" formControlName="password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" name="password" id="password"
+                        class="form-control" placeholder="Password" required>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Ovo polje je obavezno.</div>
+                        <div *ngIf="f.password.errors.minlength">Password mora imati najmanje 8 karaktera.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Ime</label>
+                    <input type="text" formControlName="ime" [ngClass]="{ 'is-invalid': submitted && f.ime.errors }"
+                        name="ime" id="ime" class="form-control" placeholder="Ime" required>
+                    <div *ngIf="submitted && f.ime.errors" class="invalid-feedback">
+                        <div *ngIf="f.ime.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Prezime</label>
+                    <input type="text" formControlName="prezime"
+                        [ngClass]="{ 'is-invalid': submitted && f.prezime.errors }" name="prezime" id="prezime"
+                        class="form-control" placeholder="Prezime" required>
+                    <div *ngIf="submitted && f.prezime.errors" class="invalid-feedback">
+                        <div *ngIf="f.ime.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label>Ulica</label>
+                    <input type="text" formControlName="ulica" [ngClass]="{ 'is-invalid': submitted && f.ulica.errors }"
+                        name="ulica" id="ulica" class="form-control" placeholder="Kraljevica Marka" required>
+                    <div *ngIf="submitted && f.ulica.errors" class="invalid-feedback">
+                        <div *ngIf="f.ulica.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Broj</label>
+                    <input type="text" formControlName="broj" [ngClass]="{ 'is-invalid': submitted && f.broj.errors }"
+                        name="broj" id="broj" class="form-control" placeholder="55a" required>
+                    <div *ngIf="submitted && f.broj.errors" class="invalid-feedback">
+                        <div *ngIf="f.broj.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Mesto</label>
+                    <input type="text" formControlName="mesto" [ngClass]="{ 'is-invalid': submitted && f.mesto.errors }"
+                        name="mesto" id="mesto" class="form-control" required>
+                    <div *ngIf="submitted && f.mesto.errors" class="invalid-feedback">
+                        <div *ngIf="f.mesto.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Drzava</label>
+                    <input type="text" formControlName="drzava"
+                        [ngClass]="{ 'is-invalid': submitted && f.drzava.errors }" name="drzava" id="drzava"
+                        class="form-control" required>
+                    <div *ngIf="submitted && f.drzava.errors" class="invalid-feedback">
+                        <div *ngIf="f.drzava.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Poslovni broj</label>
+                    <input type="text" formControlName="poslovniBroj"
+                        [ngClass]="{ 'is-invalid': submitted && f.poslovniBroj.errors }" name="poslovniBroj"
+                        id="poslovniBroj" class="form-control" required>
+                    <div *ngIf="submitted && f.poslovniBroj.errors" class="invalid-feedback">
+                        <div *ngIf="f.poslovniBroj.errors.required">Ovo polje je obavezno.</div>
+                        <div *ngIf="f.poslovniBroj.errors.pattern">Poslovni broj mora da sadrzi 10 cifara.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Naziv firme</label>
+                    <input type="text" formControlName="nazivFirme"
+                        [ngClass]="{ 'is-invalid': submitted && f.nazivFirme.errors }" name="nazivFirme" id="nazivFirme"
+                        class="form-control" required>
+                    <div *ngIf="submitted && f.nazivFirme.errors" class="invalid-feedback">
+                        <div *ngIf="f.nazivFirme.errors.required">Ovo polje je obavezno.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary"> <span *ngIf="loading"
+                        class="fa fa-spinner fa-spin"></span> Registracija</button>
+                <button class="btn btn-danger">Nazad</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" *ngIf="show==2">
+        <div class="row">
+            <div class="col-12">
+                <h2>Korisnici</h2>
+                <br>
+                <div *ngIf="korisnici.length==0">
+                    <h4>Ne postoje korisnici u sistemu.</h4>
+                </div>
+                <div *ngIf="korisnici.length!=0">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Ime</th>
+                                <th scope="col">Prezime</th>
+                                <th scope="col">Aktivan</th>
+                                <th scope="col">Blokiran</th>
+                                <th scope="col">Akcije</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let korisnik of korisnici">
+                                <td>{{korisnik.username}}</td>
+                                <td>{{korisnik.email}}</td>
+                                <td>{{korisnik.ime}}</td>
+                                <td>{{korisnik.prezime}}</td>
+                                <td>{{korisnik.enabled}}</td>
+                                <td>{{korisnik.blocked}}</td>
+                                <td>
+                                    <button [ngClass]="{'allow': !korisnik.enabled}" type="button" class="btn btn-primary"><span
+                                            class="fa fa-check-circle" (click)="!korisnik.enabled ? activateUser(korisnik.id) : '' " ></span> Aktiviraj</button>
+                                    <button type="button" class="btn btn-success"><span class="fa fa-ban"></span>
+                                        Blokiraj</button>
+                                    <button type="button" class="btn btn-danger"><span class="fa fa-trash"></span>
+                                        Obrisi</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forme za sifarnik -->
+
+    <div class="container col-md-6" *ngIf="show==3">
+        <form [formGroup]="klasaAutaForm">
+            <h2 class="text-center">Klasa automobila</h2>
+            <br>
+            <div class="form-group">
+                <label>Klasa automobila</label>
+                <input type="text" formControlName="ime"
+                    [ngClass]="{'is-invalid': submitted && k.ime.errors}" class="form-control" name="ime"
+                    id="ime" required>
+                <div *ngIf="submitted && k.ime.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+
+        <div *ngIf="klaseAuta.length==0">
+            <h4>Ne postoje klase automobila u sistemu.</h4>
+        </div>
+        <div *ngIf="klaseAuta.length!=0">
+            <table class="table table-borderless table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Klasa auta</th>
+                        <th scope="col">Akcije</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let klasa of klaseAuta">
+                        <td>{{klasa.ime}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary"><span class="fa  fa fa-pencil"></span>
+                                Izmeni</button>
+                            <button type="button" class="btn btn-danger"><span class="fa fa-trash"></span>
+                                Obrisi</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container col-md-6" *ngIf="show==4">
+        <form [formGroup]="markaAutaForm">
+            <h2 class="text-center">Marka automobila</h2>
+            <div class="form-group">
+                <label>Marka automobila</label>
+                <input type="text" formControlName="markaAuta"
+                    [ngClass]="{'is-invalid': submitted && f.markaAuta.errors}" class="form-control" name="markaAuta"
+                    id="markaAuta" required>
+                <div *ngIf="submitted && f.markaAuta.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group">
+                <label>Modeli automobila</label>
+                <input type="text" formControlName="modeliAuta"
+                    [ngClass]="{'is-invalid': submitted && f.modeliAuta.errors}" class="form-control" name="modeliAuta"
+                    id="modeliAuta" required>
+                <div *ngIf="submitted && f.modeliAuta.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container col-md-6" *ngIf="show==5">
+        <form [formGroup]="modelAutaForm">
+            <h2 class="text-center">Model automobila</h2>
+            <div class="form-group">
+                <label>Model automobila</label>
+                <input type="text" formControlName="modelAuta"
+                    [ngClass]="{'is-invalid': submitted && f.modelAuta.errors}" class="form-control" name="modelAuta"
+                    id="modelAuta" required>
+                <div *ngIf="submitted && f.modelAuta.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group">
+                <label>Marka automobila</label>
+                <input type="text" formControlName="markaAuta"
+                    [ngClass]="{'is-invalid': submitted && f.markaAuta.errors}" class="form-control" name="markaAuta"
+                    id="markaAuta" required>
+                <div *ngIf="submitted && f.markaAuta.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container col-md-6" *ngIf="show==6">
+        <form [formGroup]="tipMenjacaForm">
+            <h2 class="text-center">Tip menjaca</h2>
+            <div class="form-group">
+                <label>Tip menjaca</label>
+                <input type="text" formControlName="tipMenjaca"
+                    [ngClass]="{'is-invalid': submitted && f.tipMenjaca.errors}" class="form-control" name="tipMenjaca"
+                    id="tipMenjaca" required>
+                <div *ngIf="submitted && f.tipMenjaca.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container col-md-6" *ngIf="show==7">
+        <form [formGroup]="vrstaGorivaForm">
+            <h2 class="text-center">Vrsta goriva</h2>
+            <div class="form-group">
+                <label>Vrsta goriva</label>
+                <input type="text" formControlName="vrstaGoriva"
+                    [ngClass]="{'is-invalid': submitted && f.vrstaGoriva.errors}" class="form-control"
+                    name="vrstaGoriva" id="vrstaGoriva" required>
+                <div *ngIf="submitted && f.vrstaGoriva.errors.required">Ovo polje je obavezno.</div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Forme za komentare -->
+    <div class="container" *ngIf="show==8">
+        <h2>Komentari</h2>
+        <br>
+        <div *ngIf="komentari.length==0">
+            <h4>Ne postoje neodobreni komentari</h4>
+        </div>
+        <div *ngIf="komentari!=0">
+            <table class="table table-borderless table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Komentar</th>
+                        <th scope="col">Akcije</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{komentar}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary"><span class="fa  fa-check-square"></span>
+                                Odobri</button>
+                            <button type="button" class="btn btn-danger"><span class="fa fa-trash"></span>
+                                Obrisi</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
