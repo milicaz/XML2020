@@ -9,6 +9,12 @@
 package com.rentacar.agent.model;
 
 import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -58,8 +64,12 @@ import javax.xml.bind.annotation.XmlType;
     "decijaSedista"
 })
 @XmlRootElement(name = "Automobil")
+@Entity
+@Table(name = "automobil")
 public class Automobil {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(name = "marka_automobila", required = true)
     protected MarkaAuta markaAutomobila;
