@@ -51,10 +51,10 @@ import javax.xml.bind.annotation.XmlType;
 public class Agent extends Korisnik {
 
 	@XmlAttribute(name = "poslovni_broj")
-	@Column(nullable = false)
+	@Column(nullable = true)
 	protected String poslovniBroj;
 	@XmlAttribute(name = "naziv_firme")
-	@Column(nullable = false)
+	@Column(nullable = true)
 	protected String nazivFirme;
 
 	/**

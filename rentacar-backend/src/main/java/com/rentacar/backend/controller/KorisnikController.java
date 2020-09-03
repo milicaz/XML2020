@@ -44,7 +44,7 @@ public class KorisnikController {
 	@RequestMapping(value = "/registration", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> registerUser(@Valid @RequestBody Korisnik korisnik, BindingResult result) {
 		System.out.println("Dosao u registrujKorisnika");
-		System.out.println("Korisnik " + korisnik.getEmail() + korisnik.getPassword());
+		System.out.println("Korisnik " + korisnik.getEmail()+ ", " + korisnik.getPassword());
 
 		KrajnjiKorisnik klijent = korisnikService.findOneByUsername(korisnik.getUsername());
 

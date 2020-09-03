@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserServiceService } from '../services/user-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { KrajnjiKorisnik } from '../model/krajnji-korisnik';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +14,9 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  user: KrajnjiKorisnik = new KrajnjiKorisnik();
+
+  constructor(private formBuilder: FormBuilder, private korisnik: UserServiceService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -32,10 +37,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("Usao sam u submit")
     this.submitted = true;
     if (this.registerForm.invalid) {
+      console.log("Nije validna forma")
       return;
+    } else {
+      this.korisnik.register(this.user).subscribe(data => {
+        this.router.navigate([''], {relativeTo: this.route})
+      })
     }
   }
-
 }
